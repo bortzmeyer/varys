@@ -36,8 +36,8 @@ ipinfo=1
 # TODO: query the DNS LGs
 
 # Where to put the downloaded zone
-if [ ! -d $basedir ]; then
-    echo "Cannot find directory $basedir" >&2
+if [ ! -d $BASEDIR ]; then
+    echo "Cannot find directory $BASEDIR" >&2
     exit 1
 fi
 
