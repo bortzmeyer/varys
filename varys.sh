@@ -206,7 +206,9 @@ fi
 
 # As of today (2013-10-28), Atlas probes cannot do requests without the RD bit :-(
 if [ $recursive = 1 ] && [ $atlas = 1 ]; then
+    cd $HOME/System/DNS/varys-code
     date > atlas.out
+    python resolve-name.py -r 500 $domain >> atlas.out 2>&1
     # TODO: -r 30 because otherwise "You do not have enough credit to schedule this measurement."
     resolve-name-periodic.py -r 30 -t A $domain >> atlas.out 2>&1
     resolve-name-periodic.py -r 30 -t NS $domain >> atlas.out 2>&1
