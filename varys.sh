@@ -11,13 +11,14 @@
 
 # Parameters
 BASEDIR=$HOME/System/DNS/varys
+export PYTHONPATH=$HOME/Programmation/RIPE-Atlas/ripe-atlas-community-contrib
 export TZ=UTC
 DIG="dig +nodnssec +noedns +bufsize=0 +retries=3"
 
 # Settings that you can modify on the command-line
 
 # Requires credentials in ~/.atlas/auth
-# Depends on the RIPEAtlas Python package
+# Depends on the RIPEAtlas Python package https://github.com/RIPE-Atlas-Community/ripe-atlas-community-contrib
 atlas=0 # Not on by default because it takes time
 
 recursive=0 # Not on by default because it may pollute caches
