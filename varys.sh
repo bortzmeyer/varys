@@ -6,6 +6,9 @@
 # during a domain name hijacking. See the README for details.
 # Stephane Bortzmeyer <bortzmeyer@nic.fr>
 
+# Varys does not try to detect if you have the required commands. If
+# you don't, you'll get an error message in the output file, period.
+
 # TODO
 # * curl to retrieve the Web pages
 
@@ -215,6 +218,12 @@ if [ $recursive = 1 ] && [ $atlas = 1 ]; then
     resolve-name-periodic.py -r 30 -t NS $domain >> atlas.out 2>&1
     git add atlas.out
 fi
+
+# DNSviz http://dnsviz.net/ and https://github.com/dnsviz/
+dnsviz probe -A $domain > dnsviz.json 2> dnsviz.out
+dnsviz print -r dnsviz.json $domain >> dnsviz.out 2>&1
+dnsviz graph -T html -r dnsviz.json $domain > dnsviz.html 2>> dnsviz.out
+git add dnsviz.out dnsviz.json dnsviz.html
 
 git commit -m "End of automatic gathering of $domain" .
 
