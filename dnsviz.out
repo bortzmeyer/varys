@@ -1,36 +1,27 @@
 No global IPv6 connectivity detected
-Analyzing org (stub)
-Analyzing icann.org
-icann.org [-] [.]
-  [-]  DS: 7/17248/1 [-], 7/17248/2 [-], 7/18060/1 [.], 7/18060/2 [.], 7/32134/1 [-], 7/32134/2 [-], 7/41334/1 [-], 7/41334/2 [-], 7/41643/1 [-], 7/41643/2 [-]
-  [-]  DNSKEY: 7/1259/256 [.], 7/36420/256 [.], 7/18060/257 [.]
-  [-]    RRSIG: icann.org/7/18060 (2015-10-31 - 2015-11-20) [.]
-  [-]  A: 192.0.43.7
-  [-]    RRSIG: icann.org/7/1259 (2015-11-03 - 2015-11-24) [.]
-  [-]  NS: c.iana-servers.net., ns.icann.org., b.iana-servers.net., a.iana-servers.net.
-  [-]    RRSIG: icann.org/7/1259 (2015-11-03 - 2015-11-24) [.]
+Analyzing . (stub)
+Analyzing frogans
+frogans [-] [.]
+  [-]  DS: 8/8152/2 [-], 8/30964/2 [.]
+  [-]  DNSKEY: 8/30964/257 [.], 8/51325/256 [.], 8/65334/256 [.]
+  [-]    RRSIG: frogans/8/30964 (2015-10-27 - 2015-12-26) [.]
+  [-]    RRSIG: frogans/8/51325 (2015-10-27 - 2015-12-26) [.]
+  [-]  NS: g.ext.nic.fr., f.ext.nic.fr., d.nic.fr.
+  [-]    RRSIG: frogans/8/51325 (2015-10-27 - 2015-12-26) [.]
   [-]  CNAME: NODATA
-  [-]    SOA: sns.dns.icann.org. noc.dns.icann.org. 2015110517 10800 3600 1209600 3600
-  [-]      RRSIG: icann.org/7/1259 (2015-11-06 - 2015-11-27) [.]
+  [-]    SOA: a.nic.fr. hostmaster.nic.frogans. 2222317379 3600 1800 3600000 5400
+  [-]      RRSIG: frogans/8/51325 (2015-11-06 - 2016-01-05) [.]
   [-]    PROOF:  [.]
-  [-]      NSEC3: FL2AHOSCUPCG711M3N8J0ANEBI68UPSN.icann.org. 1 0 5 a694c957ffeb9ec9 FL8SN86Q0J04P8PKJEGK07NF07N1KN85 A NS SOA MX TXT AAAA RRSIG DNSKEY NSEC3PARAM
-  [-]        RRSIG: icann.org/7/1259 (2015-10-27 - 2015-11-17) [.]
-  [-]  SOA: sns.dns.icann.org. noc.dns.icann.org. 2015110517 10800 3600 1209600 3600
-  [-]    RRSIG: icann.org/7/1259 (2015-11-06 - 2015-11-27) [.]
-  [-]  MX: 10 pechora5.icann.org., 10 pechora1.icann.org., 10 pechora7.icann.org., 10 pechora4.icann.org., 10 pechora3.icann.org.
-  [-]    RRSIG: icann.org/7/1259 (2015-11-04 - 2015-11-24) [.]
-  [-]  TXT: "$Id: icann.org 4563 2015-11-05 19:07:27Z mvergara $", "v=spf1 ?all"
-  [-]    RRSIG: icann.org/7/1259 (2015-11-05 - 2015-11-26) [.]
-  [-]  AAAA: 2001:500:88:200::7
-  [-]    RRSIG: icann.org/7/1259 (2015-11-05 - 2015-11-26) [.]
-c67y9ptgfo.icann.org
+  [-]      NSEC3: RAR2CEKUK5AD4UGPTPAI46QVG2RD46E7.frogans. 1 1 1 33e27113 4L5O3CBT34INRU0FM7QP4EVJDKC418G2 NS SOA TXT RRSIG DNSKEY NSEC3PARAM
+  [-]        RRSIG: frogans/8/51325 (2015-10-27 - 2015-12-26) [.]
+  [-]  SOA: a.nic.fr. hostmaster.nic.frogans. 2222317379 3600 1800 3600000 5400
+  [-]    RRSIG: frogans/8/51325 (2015-11-06 - 2016-01-05) [.]
+ht2c8vq67o.frogans
   [-]  A: NXDOMAIN
-  [-]    SOA: sns.dns.icann.org. noc.dns.icann.org. 2015110517 10800 3600 1209600 3600
-  [-]      RRSIG: icann.org/7/1259 (2015-11-06 - 2015-11-27) [.]
+  [-]    SOA: a.nic.fr. hostmaster.nic.frogans. 2222317379 3600 1800 3600000 5400
+  [-]      RRSIG: frogans/8/51325 (2015-11-06 - 2016-01-05) [.]
   [-]    PROOF:  [.]
-  [-]      NSEC3: U8L8AFSCIRQNFI3VA40C845R92R7ETJK.icann.org. 1 0 5 a694c957ffeb9ec9 U93FMBC54O61A0NEH7CLCSD0B89DBJ0P A RRSIG
-  [-]        RRSIG: icann.org/7/1259 (2015-10-28 - 2015-11-18) [.]
-  [-]      NSEC3: FL2AHOSCUPCG711M3N8J0ANEBI68UPSN.icann.org. 1 0 5 a694c957ffeb9ec9 FL8SN86Q0J04P8PKJEGK07NF07N1KN85 A NS SOA MX TXT AAAA RRSIG DNSKEY NSEC3PARAM
-  [-]        RRSIG: icann.org/7/1259 (2015-10-27 - 2015-11-17) [.]
-  [-]      NSEC3: UHJA2O7AN6KVKU7GSF566DNG8H2E2EQU.icann.org. 1 0 5 a694c957ffeb9ec9 UI692S2UL0ABELH25APFVQ3KFVPS32ED A RRSIG
-  [-]        RRSIG: icann.org/7/1259 (2015-10-28 - 2015-11-18) [.]
+  [-]      NSEC3: 4L5O3CBT34INRU0FM7QP4EVJDKC418G2.frogans. 1 1 1 33e27113 RAR2CEKUK5AD4UGPTPAI46QVG2RD46E7 NS DS RRSIG
+  [-]        RRSIG: frogans/8/51325 (2015-10-27 - 2015-12-26) [.]
+  [-]      NSEC3: RAR2CEKUK5AD4UGPTPAI46QVG2RD46E7.frogans. 1 1 1 33e27113 4L5O3CBT34INRU0FM7QP4EVJDKC418G2 NS SOA TXT RRSIG DNSKEY NSEC3PARAM
+  [-]        RRSIG: frogans/8/51325 (2015-10-27 - 2015-12-26) [.]

@@ -14,7 +14,9 @@
 
 # Parameters
 BASEDIR=$HOME/System/DNS/varys
-export PYTHONPATH=$HOME/Programmation/RIPE-Atlas/ripe-atlas-community-contrib
+CODEDIR=$HOME/System/DNS/varys-code
+ATLASCODE=$HOME/Programmation/RIPE-Atlas/ripe-atlas-community-contrib
+export PYTHONPATH=$ATLASCODE
 export TZ=UTC
 DIG="dig +nodnssec +noedns +bufsize=0 +retries=3"
 
@@ -210,12 +212,16 @@ fi
 
 # As of today (2013-10-28), Atlas probes cannot do requests without the RD bit :-(
 if [ $recursive = 1 ] && [ $atlas = 1 ]; then
-    cd $HOME/System/DNS/varys-code
+    cd $ATLASCODE
     date > atlas.out
     python resolve-name.py -r 500 $domain >> atlas.out 2>&1
     # TODO: -r 30 because otherwise "You do not have enough credit to schedule this measurement."
+    mv atlas.out $CODEDIR
+    cd $CODEDIR
     resolve-name-periodic.py -r 30 -t A $domain >> atlas.out 2>&1
     resolve-name-periodic.py -r 30 -t NS $domain >> atlas.out 2>&1
+    mv atlas.out $dir
+    cd $dir
     git add atlas.out
 fi
 
