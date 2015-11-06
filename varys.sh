@@ -220,8 +220,8 @@ if [ $recursive = 1 ] && [ $atlas = 1 ]; then
     cd $CODEDIR
     resolve-name-periodic.py -r 30 -t A $domain >> atlas.out 2>&1
     resolve-name-periodic.py -r 30 -t NS $domain >> atlas.out 2>&1
-    mv atlas.out $dir
-    cd $dir
+    mv atlas.out $BASEDIR/$dir
+    cd $BASEDIR/$dir
     git add atlas.out
 fi
 
