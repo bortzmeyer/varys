@@ -1,0 +1,45 @@
+Analyzing co.jp (stub)
+Analyzing jp (stub)
+Analyzing iij.co.jp
+iij.co.jp [.]
+  [-]  DS: 8/6454/1 [.], 8/6454/2 [.]
+  [-]  DNSKEY: 8/18558/256 [.], 8/18726/256 [.], 8/6454/257 [.]
+  [-]    RRSIG: iij.co.jp/8/6454 (2015-11-05 - 2015-12-05) [.]
+  [-]    RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]  A: NODATA
+  [-]    SOA: dns0.iij.ad.jp. postmaster.iij.ad.jp. 1446739804 3600 1800 3600000 86400
+  [-]      RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]    PROOF:  [.]
+  [-]      NSEC3: 3KKJUGE26GBPE3GATM72ANHC8C2OAJQF.iij.co.jp. 1 1 8 000f160c516f2ff2 A6R5KTTE9HM0N46CCMC84SNNCMTG27EB NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM
+  [-]        RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]  NS: dns1.iij.ad.jp., dns0.iij.ad.jp.
+  [-]    RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]  CNAME: NODATA
+  [-]    SOA: dns0.iij.ad.jp. postmaster.iij.ad.jp. 1446739804 3600 1800 3600000 86400
+  [-]      RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]    PROOF:  [.]
+  [-]      NSEC3: 3KKJUGE26GBPE3GATM72ANHC8C2OAJQF.iij.co.jp. 1 1 8 000f160c516f2ff2 A6R5KTTE9HM0N46CCMC84SNNCMTG27EB NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM
+  [-]        RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]  SOA: dns0.iij.ad.jp. postmaster.iij.ad.jp. 1446739804 3600 1800 3600000 86400
+  [-]    RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]  MX: 10 omgi.iij.co.jp.
+  [-]    RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]  TXT: "v=spf1 include:spf.securemx.jp include:spf.iij.ad.jp include:spf.mailserver.ne.jp" " ip4:210.128.254.23 ip4:210.128.254.25 ip4:202.221.249.230 ip4:202.221.197.122" " ip4:202.221.197.123 ip4:210.138.50.4/30 ip4:210.138.50.8/30 ip4:210.149.101.19" " ip4:210.148.101.172 ~all"
+  [-]    RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]  AAAA: NODATA
+  [-]    SOA: dns0.iij.ad.jp. postmaster.iij.ad.jp. 1446739804 3600 1800 3600000 86400
+  [-]      RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]    PROOF:  [.]
+  [-]      NSEC3: 3KKJUGE26GBPE3GATM72ANHC8C2OAJQF.iij.co.jp. 1 1 8 000f160c516f2ff2 A6R5KTTE9HM0N46CCMC84SNNCMTG27EB NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM
+  [-]        RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+ibqn3x1kdm.iij.co.jp
+  [-]  A: NXDOMAIN
+  [-]    SOA: dns0.iij.ad.jp. postmaster.iij.ad.jp. 1446739804 3600 1800 3600000 86400
+  [-]      RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]    PROOF:  [.]
+  [-]      NSEC3: A6R5KTTE9HM0N46CCMC84SNNCMTG27EB.iij.co.jp. 1 1 8 000f160c516f2ff2 TTQFJBAJ2FAR7BEHQ0KFN8NA372QHML8 TXT RRSIG
+  [-]        RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]      NSEC3: 3KKJUGE26GBPE3GATM72ANHC8C2OAJQF.iij.co.jp. 1 1 8 000f160c516f2ff2 A6R5KTTE9HM0N46CCMC84SNNCMTG27EB NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM
+  [-]        RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]
+  [-]      NSEC3: TTQFJBAJ2FAR7BEHQ0KFN8NA372QHML8.iij.co.jp. 1 1 8 000f160c516f2ff2 3KKJUGE26GBPE3GATM72ANHC8C2OAJQF A AAAA RRSIG
+  [-]        RRSIG: iij.co.jp/8/18558 (2015-11-05 - 2015-12-05) [.]

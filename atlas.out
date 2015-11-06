@@ -1,0 +1,6 @@
+Fri Nov  6 10:16:24 UTC 2015
+python: can't open file 'resolve-name.py': [Errno 2] No such file or directory
+{'definitions': [{'query_class': 'IN', 'use_probe_resolver': True, 'af': 4, 'query_argument': 'iij.co.jp.', 'query_type': 'A', 'type': 'dns', 'is_oneoff': False, 'recursion_desired': True, 'description': 'DNS resolution of iij.co.jp.'}], 'start_time': 1446804984, 'stop_time': 1446891384, 'probes': [{'requested': 30, 'type': 'area', 'value': 'WW'}]}
+Measurement #2922152 for iij.co.jp./A uses 30 probes
+{'definitions': [{'query_class': 'IN', 'use_probe_resolver': True, 'af': 4, 'query_argument': 'iij.co.jp.', 'query_type': 'NS', 'type': 'dns', 'is_oneoff': False, 'recursion_desired': True, 'description': 'DNS resolution of iij.co.jp.'}], 'start_time': 1446805358, 'stop_time': 1446891758, 'probes': [{'requested': 30, 'type': 'area', 'value': 'WW'}]}
+Measurement #2922155 for iij.co.jp./NS uses 30 probes
