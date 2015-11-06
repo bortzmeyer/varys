@@ -1,0 +1,6 @@
+Fri Nov  6 09:58:09 UTC 2015
+python: can't open file 'resolve-name.py': [Errno 2] No such file or directory
+{'definitions': [{'query_class': 'IN', 'use_probe_resolver': True, 'af': 4, 'query_argument': 'icann.org', 'query_type': 'A', 'type': 'dns', 'is_oneoff': False, 'recursion_desired': True, 'description': 'DNS resolution of icann.org'}], 'start_time': 1446803889, 'stop_time': 1446890289, 'probes': [{'requested': 30, 'type': 'area', 'value': 'WW'}]}
+Measurement #2922139 for icann.org/A uses 30 probes
+{'definitions': [{'query_class': 'IN', 'use_probe_resolver': True, 'af': 4, 'query_argument': 'icann.org', 'query_type': 'NS', 'type': 'dns', 'is_oneoff': False, 'recursion_desired': True, 'description': 'DNS resolution of icann.org'}], 'start_time': 1446804269, 'stop_time': 1446890669, 'probes': [{'requested': 30, 'type': 'area', 'value': 'WW'}]}
+Measurement #2922145 for icann.org/NS uses 30 probes
