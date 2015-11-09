@@ -28,6 +28,14 @@ atlas=0 # Not on by default because it takes time
 
 recursive=0 # Not on by default because it may pollute caches
 
+# Depends on the local DNSZviz executable
+# DNSviz http://dnsviz.net/ and https://github.com/dnsviz/
+dnsviz=1
+
+# Depends on the local Zonemaster executable
+# https://github.com/dotse/zonemaster
+zonemaster=1
+
 # Requires credentials in ~/.isc-dnsdb-query.conf plus the CLI tool from DNSDB
 dnsdb=1
 
@@ -43,7 +51,11 @@ ipinfo=1
 
 # Where to put the downloaded zone
 if [ ! -d $BASEDIR ]; then
-    echo "Cannot find directory $BASEDIR" >&2
+    echo "Cannot find data directory $BASEDIR" >&2
+    exit 1
+fi
+if [ ! -d $CODEDIR ]; then
+    echo "Cannot find code directory $CODEDIR" >&2
     exit 1
 fi
 
@@ -73,6 +85,11 @@ fi
 if [ ! -z "$3" ]; then
    echo "Usage: $0 domain-name [host-name]" >&2
    exit 1
+fi
+
+if [ $atlas = 1 ] && [ ! -d $ATLASCODE ]; then
+    echo "Cannot find Atlas directory $ATLASCODE" >&2
+    exit 1
 fi
 
 # TODO: authorize IDN
@@ -212,24 +229,34 @@ fi
 
 # As of today (2013-10-28), Atlas probes cannot do requests without the RD bit :-(
 if [ $recursive = 1 ] && [ $atlas = 1 ]; then
-    cd $ATLASCODE
+    cd $ATLASCODE || exit 1
     date > atlas.out
     python resolve-name.py -r 500 $domain >> atlas.out 2>&1
     # TODO: -r 30 because otherwise "You do not have enough credit to schedule this measurement."
     mv atlas.out $CODEDIR
-    cd $CODEDIR
+    cd $CODEDIR || exit 1
+    echo "" >> atlas.out 
     resolve-name-periodic.py -r 30 -t A $domain >> atlas.out 2>&1
+    echo "" >> atlas.out 
     resolve-name-periodic.py -r 30 -t NS $domain >> atlas.out 2>&1
     mv atlas.out $BASEDIR/$dir
-    cd $BASEDIR/$dir
+    cd $BASEDIR/$dir || exit 1
     git add atlas.out
 fi
 
-# DNSviz http://dnsviz.net/ and https://github.com/dnsviz/
-dnsviz probe -A $domain > dnsviz.json 2> dnsviz.out
-dnsviz print -r dnsviz.json $domain >> dnsviz.out 2>&1
-dnsviz graph -T html -r dnsviz.json $domain > dnsviz.html 2>> dnsviz.out
-git add dnsviz.out dnsviz.json dnsviz.html
+if [ $dnsviz = 1 ]; then
+    date > dnsviz.out
+    dnsviz probe -A $domain > dnsviz.json 2>> dnsviz.out
+    dnsviz print -r dnsviz.json $domain >> dnsviz.out 2>&1
+    dnsviz graph -T html -r dnsviz.json $domain > dnsviz.html 2>> dnsviz.out
+    git add dnsviz.out dnsviz.json dnsviz.html
+fi
+
+if [ $zonemaster = 1 ]; then
+    date > zonemaster.out
+    zonemaster-cli $domain >> zonemaster.out 2>&1
+    git add zonemaster.out 
+fi
 
 git commit -m "End of automatic gathering of $domain" .
 
