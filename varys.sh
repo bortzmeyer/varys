@@ -59,9 +59,10 @@ if [ ! -d $CODEDIR ]; then
     exit 1
 fi
 
-temp=$(getopt -o "ardi" -- "$@")
+orig=$@
+temp=$(getopt -o "ardilzcv" -- "$@")
 if [ $? != 0 ]; then
-    echo "Usage: $0 [-a] [-r] [-d] [-i] domain-name" >&2
+    echo "Usage: $0 [-a] [-r] [-d] [-i] |-z] [-v] domain-name" >&2
     exit 1
 fi
 eval set -- "$temp"
@@ -73,6 +74,8 @@ while true ; do
 		-l) circl=0; shift;;
 		-c) dns360=0; shift;;
                 -i) ipinfo=0; shift;;
+		-z) zonemaster=0; shift;;
+		-v) dnsviz=0; shift;;
                 --) shift ; break ;;
                 *) echo "Internal error!" >&2 ; exit 1 ;;
         esac
@@ -108,7 +111,8 @@ dir=$domain/$date
 mkdir -p $dir || (echo "Cannot create $dir"; exit 1)
 git add $dir || (echo "Cannot git add $dir"; exit 1)
 cd $dir
-echo -e "Add here any comments or analysis about these data\n**************\n\n" > README
+printf "Analysis of \"$domain\" on $(date) with options \"$orig\" \n" > README
+printf "Add here any comments or analysis about these data\n**************\n\n" >> README
 git add README
 
 (date; hostname -f; id; ifconfig) > metadata.out 2>&1
@@ -168,6 +172,7 @@ mkdir zones
 try-get-zone $domain zones > /dev/null 2>&1 && git add zones/${domain}.db
 # TODO: try-get-zone does not handle the dot at the end
 try-get-zone $parent zones > /dev/null 2>&1 && git add zones/${parent}.db
+git add zones
 
 ntptrace > ntptrace.out 2>&1
 git add ntptrace.out
@@ -228,9 +233,11 @@ if [ $recursive = 1 ]; then
 fi
 
 # As of today (2013-10-28), Atlas probes cannot do requests without the RD bit :-(
+# TODO Awful code, see issue #4
 if [ $recursive = 1 ] && [ $atlas = 1 ]; then
     cd $ATLASCODE || exit 1
     date > atlas.out
+    echo "" >> atlas.out
     python resolve-name.py -r 500 $domain >> atlas.out 2>&1
     # TODO: -r 30 because otherwise "You do not have enough credit to schedule this measurement."
     mv atlas.out $CODEDIR
