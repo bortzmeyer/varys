@@ -236,17 +236,17 @@ fi
 # TODO Awful code, see issue #4
 if [ $recursive = 1 ] && [ $atlas = 1 ]; then
     cd $ATLASCODE || exit 1
-    date > atlas.out
-    echo "" >> atlas.out
-    python resolve-name.py -r 500 $domain >> atlas.out 2>&1
+    date > atlas.$$.out
+    echo "" >> atlas.$$.out
+    python resolve-name.py -r 500 $domain >> atlas.$$.out 2>&1
     # TODO: -r 30 because otherwise "You do not have enough credit to schedule this measurement."
-    mv atlas.out $CODEDIR
+    mv atlas.$$.out $CODEDIR
     cd $CODEDIR || exit 1
-    echo "" >> atlas.out 
-    resolve-name-periodic.py -r 30 -t A $domain >> atlas.out 2>&1
-    echo "" >> atlas.out 
-    resolve-name-periodic.py -r 30 -t NS $domain >> atlas.out 2>&1
-    mv atlas.out $BASEDIR/$dir
+    echo "" >> atlas.$$.out 
+    resolve-name-periodic.py -r 30 -t A $domain >> atlas.$$.out 2>&1
+    echo "" >> atlas.$$.out 
+    resolve-name-periodic.py -r 30 -t NS $domain >> atlas.$$.out 2>&1
+    mv atlas.$$.out $BASEDIR/$dir/atlas.out
     cd $BASEDIR/$dir || exit 1
     git add atlas.out
 fi
