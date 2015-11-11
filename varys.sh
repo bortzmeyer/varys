@@ -169,9 +169,9 @@ git add dns-domain-at-parent.out
 
 
 mkdir zones
-try-get-zone $domain zones > /dev/null 2>&1 && git add zones/${domain}.db
-# TODO: try-get-zone does not handle the dot at the end
-try-get-zone $parent zones > /dev/null 2>&1 && git add zones/${parent}.db
+try-get-zone $domain zones > zones/output-and-errors.out 2>&1 && git add zones/${domain}.db
+# TODO : $parent ends with a dot, which confuses try-get-zone
+try-get-zone $parent zones >> zones/output-and-errors.out 2>&1 && git add zones/${parent}.db
 git add zones
 
 ntptrace > ntptrace.out 2>&1
