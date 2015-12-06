@@ -118,6 +118,18 @@ git add README
 (date; hostname -f; id; ifconfig) > metadata.out 2>&1
 git add metadata.out
 
+echo "" >> metadata.out
+echo "External IP address from ipify.org:" >> metadata.out
+# https://www.ipify.org/
+externalip=$(curl -s 'https://api.ipify.org/')
+if [ "$externalip" != "" ]; then
+    echo $externalip >> metadata.out 2>&1
+    dig -x $externalip >> metadata.out 2>&1
+    whois $externalip >> metadata.out 2>&1
+else
+    echo "Failure when contacting ipify.org" >> metadata.out
+fi
+
 (date; echo ""; whois $domain) > whois.out 2>&1
 git add whois.out
 
