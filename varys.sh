@@ -104,12 +104,12 @@ fi
 date=$(date -u --rfc-3339=seconds | sed 's/ /T/')
 cd $BASEDIR
 if ! git status > /dev/null 2>&1; then
-    echo "$PWD is not a git working copy"
+    echo "$PWD is not a git working copy" >&2
     exit 1
 fi
 dir=$domain/$date
-mkdir -p $dir || (echo "Cannot create $dir"; exit 1)
-git add $dir || (echo "Cannot git add $dir"; exit 1)
+mkdir -p $dir || (echo "Cannot create $dir" >&2; exit 1)
+git add $dir || (echo "Cannot git add $dir" >&2; exit 1)
 cd $dir
 printf "Analysis of \"$domain\" on $(date) with options \"$orig\" \n" > README
 printf "Add here any comments or analysis about these data\n**************\n\n" >> README
@@ -123,9 +123,9 @@ echo "External IP address from ipify.org:" >> metadata.out
 # https://www.ipify.org/
 externalip=$(curl -s 'https://api.ipify.org/')
 if [ "$externalip" != "" ]; then
-    echo $externalip >> metadata.out 2>&1
-    dig -x $externalip >> metadata.out 2>&1
-    whois $externalip >> metadata.out 2>&1
+    printf "%s\n" $externalip >> metadata.out 2>&1
+    dig -x "$externalip" >> metadata.out 2>&1
+    whois "$externalip" >> metadata.out 2>&1
 else
     echo "Failure when contacting ipify.org" >> metadata.out
 fi
@@ -191,9 +191,9 @@ git add ntptrace.out
 
 if [ $ipinfo = 1 ]; then
     if [ $host != $domain ]; then
-	echo "IP information for $host ($ipaddress $ip6address)" > ipinfo.out
+	printf "%s\n" "IP information for $host ($ipaddress $ip6address)" > ipinfo.out
     else
-	echo "IP information ($ipaddress $ip6address)" > ipinfo.out
+	printf "%s\n" "IP information ($ipaddress $ip6address)" > ipinfo.out
     fi
     date >> ipinfo.out
     varys-ripestat.py $ipaddress >> ipinfo.out 2>&1
@@ -219,7 +219,7 @@ fi
 if [ $circl = 1 ]; then
     date > circl.out
     if [ ! -e $HOME/.circl.conf ]; then
-	echo "No credentials in ~/.circl.conf" >> circl.out
+	echo "No credentials in ~/.circl.conf" >> circl.out 
     else
 	# https://www.circl.lu/services/passive-dns/
 	curl -q --user $(head -n 1 ~/.circl.conf) https://www.circl.lu/pdns/query/$domain >> circl.out 2>&1
